@@ -43,6 +43,11 @@ export const articleRepository = (axios: NuxtAxiosInstance) => ({
   getArticle(slug: Slug): ArticleResponse {
     return axios.$get(`/articles/${slug}`)
   },
+  getProvince() {
+    return fetch('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json', {
+    
+    })
+  },
   getArticleList({
     tag,
     author,

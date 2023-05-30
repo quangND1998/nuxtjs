@@ -7,7 +7,8 @@ export type FeedType = 'GLOBAL' | 'YOUR'
 
 type State = {
   articleList: Article[]
-  articleCount: number
+  articleCount: number,
+  provinces:any,
 }
 
 const feedType = ref<FeedType>('GLOBAL')
@@ -23,6 +24,7 @@ export default function useArticleList() {
   const state = reactive<State>({
     articleList: [],
     articleCount: 0,
+    provinces:[],
   })
 
   const getArticleList = async (payload: ArticleListRequest = {}) => {
@@ -35,6 +37,13 @@ export default function useArticleList() {
     state.articleList = articles
     state.articleCount = articlesCount
   }
+  const getProvince = async () => {
+    const response= await $repository.article.getProvince()
+    const jsonData = await response.json();
+    state.provinces = jsonData
+
+  }
+
 
   const getFeedArticleList = async (offset = 0) => {
     const {
@@ -85,6 +94,7 @@ export default function useArticleList() {
   return {
     state,
     feedType,
+    getProvince,
     getArticleList,
     getFeedArticleList,
     getArticleListByTag,

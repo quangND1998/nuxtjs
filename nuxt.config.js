@@ -17,7 +17,7 @@ export default {
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
-    css: [],
+    css: ['@/assets/main.css'],
     plugins: ['@/plugins/repository'],
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 
@@ -43,7 +43,8 @@ export default {
         // https://axios.nuxtjs.org
         '@nuxtjs/axios',
         // https://github.com/nuxt-community/community-modules/tree/master/packages/markdownit
-        '@nuxtjs/markdownit'
+        '@nuxtjs/markdownit',
+        '@nuxtjs/auth-next'
     ],
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -60,6 +61,9 @@ export default {
             brands: true,
         },
     },
+    // router: {
+    //     middleware: ['auth']
+    // }
     // https://typescript.nuxtjs.org/guide/lint.html#runtime-lint
 
 }
